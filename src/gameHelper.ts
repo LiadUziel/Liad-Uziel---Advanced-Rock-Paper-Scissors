@@ -60,10 +60,24 @@ export class GameHelper {
     return hands[randomIndex];
   }
 
+  /**
+   * Get value from arguments of appropriate key
+   *
+   * @param key from arguments
+   * @returns value of this key
+   */
   static getValueFromArgs = (key: string) => {
-    /*
-    TODO: complete this function to return the value of the key from the process.argv array
-    */
+    const args = process.argv;
+
+    // Find the argument by key in the format {key}=value
+    const arg = args.find((arg) => arg.startsWith(`${key}=`));
+
+    if (arg) {
+      // Split the key and value, returning the value part
+      const value = arg.split("=")[1];
+      return value;
+    }
+
     return undefined;
   };
 }
