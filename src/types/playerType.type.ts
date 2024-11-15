@@ -1,1 +1,1 @@
-export type PlayerType = "Human" | "Cpu";
+export type PlayerType = 'Human' | 'Cpu';

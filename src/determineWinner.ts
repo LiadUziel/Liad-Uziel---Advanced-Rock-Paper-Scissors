@@ -1,5 +1,5 @@
-import { Hand } from "./types/hand.type.js";
-import { Scoreboard } from "./types/scoreboard.interface.js";
+import { Hand } from './types/hand.type.js';
+import { Scoreboard } from './types/scoreboard.interface.js';
 
 /**
  *
@@ -7,10 +7,7 @@ import { Scoreboard } from "./types/scoreboard.interface.js";
  * @param p2Hands Player 2's hand picks
  * @returns A string representing a scoreboard for the game
  */
-export function determineWinnerWithScoreboard(
-  p1Hands: Hand[],
-  p2Hands: Hand[]
-): Scoreboard {
+export function determineWinnerWithScoreboard(p1Hands: Hand[], p2Hands: Hand[]): Scoreboard {
   let p1Score = 0;
   let p2Score = 0;
   const outputMessage: string[] = [];
@@ -19,7 +16,7 @@ export function determineWinnerWithScoreboard(
   let totalP2Score = 0;
 
   // Add header
-  outputMessage.push("\n=== ROCK PAPER SCISSORS SCOREBOARD ===\n");
+  outputMessage.push('\n=== ROCK PAPER SCISSORS SCOREBOARD ===\n');
 
   // Process each sub round
   for (let i = 0; i < p1Hands.length; i++) {
@@ -33,14 +30,14 @@ export function determineWinnerWithScoreboard(
       p1Score++;
       totalP1Score++;
 
-      outputMessage.push("Result: Player 1 wins this round!");
+      outputMessage.push('Result: Player 1 wins this round!');
     } else if (roundResult === 2) {
       p2Score++;
       totalP2Score++;
 
-      outputMessage.push("Result: Player 2 wins this round!");
+      outputMessage.push('Result: Player 2 wins this round!');
     } else {
-      outputMessage.push("Result: Tie round!");
+      outputMessage.push('Result: Tie round!');
     }
 
     // Show current score after each round
@@ -48,22 +45,22 @@ export function determineWinnerWithScoreboard(
   }
 
   // Add final results
-  outputMessage.push("=== FINAL RESULTS ===");
+  outputMessage.push('=== FINAL RESULTS ===');
   outputMessage.push(`Player 1: ${p1Score} points`);
   outputMessage.push(`Player 2: ${p2Score} points`);
   outputMessage.push(
-    "\nFinal Verdict: " +
+    '\nFinal Verdict: ' +
       (p1Score > p2Score
-        ? "Player 1 Wins the Game!!!"
+        ? 'Player 1 Wins the Game!!!'
         : p2Score > p1Score
-        ? "Player 2 Wins the Game!!!"
+        ? 'Player 2 Wins the Game!!!'
         : "It's a Tie Game!")
   );
 
   const scoreboard: Scoreboard = {
     player1Points: totalP1Score,
     player2Points: totalP2Score,
-    message: outputMessage.join("\n"),
+    message: outputMessage.join('\n'),
   };
 
   return scoreboard;
@@ -83,9 +80,9 @@ function determineSubRoundWinner(p1Hand: Hand, p2Hand: Hand): number {
   }
 
   const winningCombos: Record<Hand, Hand> = {
-    Rock: "Scissors",
-    Paper: "Rock",
-    Scissors: "Paper",
+    Rock: 'Scissors',
+    Paper: 'Rock',
+    Scissors: 'Paper',
   };
 
   if (winningCombos[p1Hand] === p2Hand) {

@@ -1,1 +1,1 @@
-export type Hand = "Rock" | "Paper" | "Scissors";
+export type Hand = 'Rock' | 'Paper' | 'Scissors';

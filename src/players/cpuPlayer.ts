@@ -1,5 +1,5 @@
-import { GameHelper } from "../gameHelper.js";
-import { Hand } from "../types/hand.type.js";
+import { GameHelper } from '../gameHelper.js';
+import { Hand } from '../types/hand.type.js';
 
 export class CpuPlayer {
   getHands = (numberOfHands: number) => {
