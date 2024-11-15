@@ -1,6 +1,5 @@
 import { determineWinnerWithScoreboard } from "./determineWinner.js";
 import { GameHelper } from "./gameHelper.js";
-import { HumanPlayer } from "./players/humanPlayer.js";
 import { PlayerType } from "./types/playerType.type.js";
 
 const run = async () => {
@@ -29,16 +28,22 @@ const startGame = async (
   numberOfRounds: number,
   numberOfHands: number
 ) => {
-  const player1 = new HumanPlayer();
-  const player2 = new HumanPlayer();
+  const [player1, player2] = GameHelper.buildPlayersByType(
+    player1Type,
+    player2Type
+  );
 
   for (let index = 0; index < numberOfRounds; index++) {
     console.log(`Round ${index + 1}/${numberOfRounds}:`);
 
-    console.log("Player 1:");
+    if (player1Type === "Human") {
+      console.log("Player 1:");
+    }
     const p1Hands = await player1.getHands(numberOfHands);
 
-    console.log("Player 2:");
+    if (player2Type === "Human") {
+      console.log("Player 2:");
+    }
     const p2Hands = await player2.getHands(numberOfHands);
 
     const scoreboard = determineWinnerWithScoreboard(p1Hands, p2Hands);
