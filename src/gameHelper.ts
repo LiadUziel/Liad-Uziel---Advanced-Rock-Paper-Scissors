@@ -1,4 +1,5 @@
 import inquirer from "inquirer";
+import { Hand } from "./types/hand.type.js";
 
 export class GameHelper {
 
@@ -24,6 +25,11 @@ static async choosePlayerType(message: string) {
         },
       ]);
     return answer.choice;
+  }
+  static chooseRandomHand(): Hand {
+    const hands: Hand[] = ["Rock", "Paper", "Scissors"];
+    const randomIndex = Math.floor(Math.random() * hands.length);
+    return hands[randomIndex];
   }
 
   static getValueFromArgs = (key: string) => {
