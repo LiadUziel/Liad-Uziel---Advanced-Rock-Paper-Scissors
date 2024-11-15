@@ -80,4 +80,41 @@ export class GameHelper {
 
     return undefined;
   };
+
+  // Helper function to validate numbers
+  /**
+   * Helper function to validate positive numbers
+   *
+   * @param value input as string
+   * @param defaultValue
+   * @returns input as number, in case its legal
+   */
+  static validatePositiveNumber(
+    value: string | undefined,
+    defaultValue: number
+  ) {
+    const num = Number(value);
+    return num > 0 ? num : defaultValue;
+  }
+
+  /**
+   * Helper function to validate PlayerType
+   *
+   * @param value input ads string
+   * @returns normalized PlayerType
+   */
+  static validatePlayerType(value: string | undefined): PlayerType | undefined {
+    if (!value) {
+      return undefined;
+    }
+
+    const normalizedValue = value.toLowerCase();
+    if (normalizedValue === "human") {
+      return "Human";
+    }
+    if (normalizedValue === "cpu") {
+      return "Cpu";
+    }
+    return undefined;
+  }
 }
